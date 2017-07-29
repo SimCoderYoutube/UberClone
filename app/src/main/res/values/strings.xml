@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Uber</string>
+    <string name="title_activity_driver_map">Map</string>
+</resources>
