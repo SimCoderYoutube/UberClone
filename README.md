@@ -19,5 +19,6 @@
 5 - Find Closest Driver For request<br />
 6 - Share Information Between Driver and Customer<br />
 7 - Distance Between Driver and Pickup Location<br />
+8 - Cancel Uber Request<br />
 
 ▷ If you have any question please ask, I'll try to answer to every question and even look at your code if that is necessary
