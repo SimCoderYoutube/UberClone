@@ -97,7 +97,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     }
                     driverFound = false;
-                    radius = 1;
+                    radius = 1; 
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
