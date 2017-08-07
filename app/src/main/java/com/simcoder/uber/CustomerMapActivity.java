@@ -97,7 +97,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     }
                     driverFound = false;
-                    radius = 1; 
+                    radius = 1;
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("customerRequest");
@@ -106,6 +106,9 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
                     if(pickupMarker != null){
                         pickupMarker.remove();
+                    }
+                    if (mDriverMarker != null){
+                        mDriverMarker.remove();
                     }
                     mRequest.setText("call Uber");
 
@@ -119,7 +122,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     geoFire.setLocation(userId, new GeoLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude()));
 
                     pickupLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-                    pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here"));
+                    pickupMarker = mMap.addMarker(new MarkerOptions().position(pickupLocation).title("Pickup Here").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
 
                     mRequest.setText("Getting your Driver....");
 
@@ -225,7 +228,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
 
 
-                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your driver"));
+                    mDriverMarker = mMap.addMarker(new MarkerOptions().position(driverLatLng).title("your driver").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_car)));
                 }
 
             }
