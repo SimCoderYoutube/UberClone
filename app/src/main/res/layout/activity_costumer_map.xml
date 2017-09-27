@@ -89,13 +89,40 @@
                     android:paddingTop="20sp"/>
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:layout_gravity="bottom"
+        <LinearLayout
+            android:background="@android:color/white"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="call Uber"
-            android:id="@+id/request"/>
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UberX"
+                    android:id="@+id/UberX"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UberBlack"
+                    android:id="@+id/UberBlack"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UberXl"
+                    android:id="@+id/UberXl"/>
+            </RadioGroup>
+
+            <Button
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="call Uber"
+                android:id="@+id/request"/>
+        </LinearLayout>
     </LinearLayout>
 
 
