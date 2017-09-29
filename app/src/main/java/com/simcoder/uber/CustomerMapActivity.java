@@ -295,6 +295,20 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             }
         });
     }
+
+    /*-------------------------------------------- Map specific functions -----
+    |  Function(s) getDriverLocation
+    |
+    |  Purpose:  Get's most updated driver location and it's always checking for movements.
+    |
+    |  Note:
+    |	   Even tho we used geofire to push the location of the driver we can use a normal
+    |      Listener to get it's location with no problem.
+    |
+    |      0 -> Latitude
+    |      1 -> Longitudde
+    |
+    *-------------------------------------------------------------------*/
     private Marker mDriverMarker;
     private DatabaseReference driverLocationRef;
     private ValueEventListener driverLocationRefListener;
@@ -346,6 +360,15 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         });
 
     }
+
+    /*-------------------------------------------- getDriverInfo -----
+    |  Function(s) getDriverInfo
+    |
+    |  Purpose:  Get all the user information that we can get from the user's database.
+    |
+    |  Note: --
+    |
+    *-------------------------------------------------------------------*/
     private void getDriverInfo(){
         mDriverInfo.setVisibility(View.VISIBLE);
         DatabaseReference mCustomerDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverFoundID);
@@ -368,7 +391,6 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
@@ -377,7 +399,17 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
 
 
-
+    /*-------------------------------------------- Map specific functions -----
+    |  Function(s) onMapReady, buildGoogleApiClient, onLocationChanged, onConnected
+    |
+    |  Purpose:  Find and update user's location.
+    |
+    |  Note:
+    |	   The update interval is set to 1000Ms and the accuracy is set to PRIORITY_HIGH_ACCURACY,
+    |      If you're having trouble with battery draining too fast then change these to lower values
+    |
+    |
+    *-------------------------------------------------------------------*/
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -431,6 +463,17 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 
+
+    /*-------------------------------------------- onRequestPermissionsResult -----
+    |  Function onRequestPermissionsResult
+    |
+    |  Purpose:  Get permissions for our app if they didn't previously exist.
+    |
+    |  Note:
+    |	requestCode: the nubmer assigned to the request that we've made. Each
+    |                request has it's own unique request code.
+    |
+    *-------------------------------------------------------------------*/
     final int LOCATION_REQUEST_CODE = 1;
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
