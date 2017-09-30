@@ -3,6 +3,7 @@
 ▷ Create an android app like uber
 
 ▷ Full Video Tutorial Playlist here: https://www.youtube.com/playlist?list=PLxabZQCAe5fgXx8cn2iKOtt0VFJrf5bOd
+▷ Lesson on how to import this project here: https://www.youtube.com/watch?v=2TkNZ-Vael4
 
 ▷ Become a Patreon: https://www.patreon.com/simpleCoder<br />
 ▷ Donate with PayPal: https://www.paypal.me/simcoder<br />
