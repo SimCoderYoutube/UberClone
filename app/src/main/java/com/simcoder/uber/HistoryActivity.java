@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +16,9 @@ import com.simcoder.uber.historyRecyclerView.HistoryAdapter;
 import com.simcoder.uber.historyRecyclerView.HistoryObject;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Locale;
+
 
 public class HistoryActivity extends AppCompatActivity {
     private String customerOrDriver, userId;
@@ -67,7 +70,13 @@ public class HistoryActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String rideId = dataSnapshot.getKey();
-                    HistoryObject obj = new HistoryObject(rideId);
+                    Long timestamp = 0L;
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        if (child.getKey().equals("timestamp")){
+                            timestamp = Long.valueOf(child.getValue().toString());
+                        }
+                    }
+                    HistoryObject obj = new HistoryObject(rideId, getDate(timestamp));
                     resultsHistory.add(obj);
                     mHistoryAdapter.notifyDataSetChanged();
                 }
@@ -76,6 +85,13 @@ public class HistoryActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+    private String getDate(Long time) {
+        Calendar cal = Calendar.getInstance(Locale.getDefault());
+        cal.setTimeInMillis(time*1000);
+        String date = DateFormat.format("MM-dd-yyyy hh:mm", cal).toString();
+        return date;
     }
 
     private ArrayList resultsHistory = new ArrayList<HistoryObject>();
