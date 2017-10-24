@@ -321,7 +321,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         map.put("destination", destination);
         map.put("location/from/lat", pickupLatLng.latitude);
         map.put("location/from/lng", pickupLatLng.longitude);
-        map.put("location/to/lat", destinationLatLng.latitude);
+        map.put("location/to/lng", destinationLatLng.longitude);
         map.put("location/to/lng", destinationLatLng.longitude);
         historyRef.child(requestId).updateChildren(map);
     }

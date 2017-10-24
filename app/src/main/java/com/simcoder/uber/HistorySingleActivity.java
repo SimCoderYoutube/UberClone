@@ -13,11 +13,15 @@ import com.directions.route.Route;
 import com.directions.route.RouteException;
 import com.directions.route.Routing;
 import com.directions.route.RoutingListener;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,11 +48,9 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
     private ImageView userImage;
 
-    private LatLng destinationLatLng, pickupLatLng;
-
-
-
     private DatabaseReference historyRideInfoDb;
+
+    private LatLng destinationLatLng, pickupLatLng;
 
     private GoogleMap mMap;
     private SupportMapFragment mMapFragment;
@@ -102,7 +104,6 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                         }
                         if (child.getKey().equals("timestamp")){
                             rideDate.setText(getDate(Long.valueOf(child.getValue().toString())));
-
                         }
                         if (child.getKey().equals("destination")){
                             rideLocation.setText(child.getValue().toString());
@@ -123,40 +124,29 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         });
     }
 
-    private void getUserInformation(String driverOrCustomer, String otherUserId) {
-        DatabaseReference mOtherUserDb = FirebaseDatabase.getInstance().getReference().child("Users").child(driverOrCustomer).child(otherUserId);
-        mOtherUserDb.addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getUserInformation(String otherUserDriverOrCustomer, String otherUserId) {
+        DatabaseReference mOtherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(otherUserDriverOrCustomer).child(otherUserId);
+        mOtherUserDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if(dataSnapshot.exists()){
                     Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                    if(map.get("name")!=null){
+                    if(map.get("name") != null){
                         userName.setText(map.get("name").toString());
                     }
-                    if(map.get("phone")!=null){
+                    if(map.get("phone") != null){
                         userPhone.setText(map.get("phone").toString());
                     }
-                    if(map.get("profileImageUrl")!=null){;
+                    if(map.get("profileImageUrl") != null){
                         Glide.with(getApplication()).load(map.get("profileImageUrl").toString()).into(userImage);
                     }
                 }
-            }
 
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-    }
-
-
-    private void getRouteToMarker() {
-        Routing routing = new Routing.Builder()
-                .travelMode(AbstractRouting.TravelMode.DRIVING)
-                .withListener(this)
-                .alternativeRoutes(false)
-                .waypoints(pickupLatLng,destinationLatLng)
-                .build();
-        routing.execute();
     }
 
     private String getDate(Long time) {
@@ -165,10 +155,19 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         String date = DateFormat.format("MM-dd-yyyy hh:mm", cal).toString();
         return date;
     }
+    private void getRouteToMarker() {
+        Routing routing = new Routing.Builder()
+                .travelMode(AbstractRouting.TravelMode.DRIVING)
+                .withListener(this)
+                .alternativeRoutes(false)
+                .waypoints(pickupLatLng, destinationLatLng)
+                .build();
+        routing.execute();
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        mMap=googleMap;
     }
 
 
@@ -188,6 +187,20 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
     @Override
     public void onRoutingSuccess(ArrayList<Route> route, int shortestRouteIndex) {
 
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        builder.include(pickupLatLng);
+        builder.include(destinationLatLng);
+        LatLngBounds bounds = builder.build();
+
+        int width = getResources().getDisplayMetrics().widthPixels;
+        int padding = (int) (width*0.2);
+
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+
+        mMap.animateCamera(cameraUpdate);
+
+        mMap.addMarker(new MarkerOptions().position(pickupLatLng).title("pickup location").icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pickup)));
+        mMap.addMarker(new MarkerOptions().position(destinationLatLng).title("destination"));
 
         if(polylines.size()>0) {
             for (Polyline poly : polylines) {
@@ -222,4 +235,5 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         }
         polylines.clear();
     }
+
 }
