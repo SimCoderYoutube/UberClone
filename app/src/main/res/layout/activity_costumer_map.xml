@@ -6,8 +6,6 @@
     tools:context="com.simcoder.uber.CustomerLoginActivity" >
 
 
-
-
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -99,6 +97,13 @@
                     android:id="@+id/driverCar"
                     android:paddingBottom="10sp"
                     android:paddingTop="20sp"/>
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ratingBar"
+                    android:layout_gravity="center"
+                    android:numStars="5"
+                    android:stepSize="0.1"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

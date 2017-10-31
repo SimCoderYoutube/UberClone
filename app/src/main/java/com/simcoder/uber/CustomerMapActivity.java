@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,6 +90,8 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
 
     private RadioGroup mRadioGroup;
 
+    private RatingBar mRatingBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +116,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
         mDriverPhone = (TextView) findViewById(R.id.driverPhone);
         mDriverCar = (TextView) findViewById(R.id.driverCar);
 
+        mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         mRadioGroup.check(R.id.UberX);
@@ -364,18 +368,29 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-                    Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
-                    if(map.get("name")!=null){
-                        mDriverName.setText(map.get("name").toString());
+                    if(dataSnapshot.child("name")!=null){
+                        mDriverName.setText(dataSnapshot.child("name").getValue().toString());
                     }
-                    if(map.get("phone")!=null){
-                        mDriverPhone.setText(map.get("phone").toString());
+                    if(dataSnapshot.child("phone")!=null){
+                        mDriverPhone.setText(dataSnapshot.child("phone").getValue().toString());
                     }
-                    if(map.get("car")!=null){
-                        mDriverCar.setText(map.get("car").toString());
+                    if(dataSnapshot.child("car")!=null){
+                        mDriverCar.setText(dataSnapshot.child("car").getValue().toString());
                     }
-                    if(map.get("profileImageUrl")!=null){
-                        Glide.with(getApplication()).load(map.get("profileImageUrl").toString()).into(mDriverProfileImage);
+                    if(dataSnapshot.child("profileImageUrl")!=null){
+                        Glide.with(getApplication()).load(dataSnapshot.child("profileImageUrl").getValue().toString()).into(mDriverProfileImage);
+                    }
+
+                    int ratingSum = 0;
+                    float ratingsTotal = 0;
+                    float ratingsAvg = 0;
+                    for (DataSnapshot child : dataSnapshot.child("rating").getChildren()){
+                        ratingSum = ratingSum + Integer.valueOf(child.getValue().toString());
+                        ratingsTotal++;
+                    }
+                    if(ratingsTotal!= 0){
+                        ratingsAvg = ratingSum/ratingsTotal;
+                        mRatingBar.setRating(ratingsAvg);
                     }
                 }
             }

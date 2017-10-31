@@ -3,7 +3,9 @@ package com.simcoder.uber;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +50,8 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
     private ImageView userImage;
 
+    private RatingBar mRatingBar;
+
     private DatabaseReference historyRideInfoDb;
 
     private LatLng destinationLatLng, pickupLatLng;
@@ -75,6 +79,8 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
 
         userImage = (ImageView) findViewById(R.id.userImage);
 
+        mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
+
         currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         historyRideInfoDb = FirebaseDatabase.getInstance().getReference().child("history").child(rideId);
@@ -100,10 +106,15 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                             if(!driverId.equals(currentUserId)){
                                 userDriverOrCustomer = "Customers";
                                 getUserInformation("Drivers", driverId);
+                                displayCustomerRelatedObjects();
                             }
                         }
                         if (child.getKey().equals("timestamp")){
                             rideDate.setText(getDate(Long.valueOf(child.getValue().toString())));
+                        }
+                        if (child.getKey().equals("rating")){
+                            mRatingBar.setRating(Integer.valueOf(child.getValue().toString()));
+
                         }
                         if (child.getKey().equals("destination")){
                             rideLocation.setText(child.getValue().toString());
@@ -120,6 +131,18 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void displayCustomerRelatedObjects() {
+        mRatingBar.setVisibility(View.VISIBLE);
+        mRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                historyRideInfoDb.child("rating").setValue(rating);
+                DatabaseReference mDriverRatingDb = FirebaseDatabase.getInstance().getReference().child("Users").child("Drivers").child(driverId).child("rating");
+                mDriverRatingDb.child(rideId).setValue(rating);
             }
         });
     }
