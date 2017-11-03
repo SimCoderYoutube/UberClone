@@ -13,8 +13,10 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +65,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
 
     private Button mLogout, mSettings, mRideStatus;
 
+    private Switch mWorkingSwitch;
+
     private int status = 0;
 
     private String customerId = "", destination;
@@ -101,6 +105,18 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mCustomerName = (TextView) findViewById(R.id.customerName);
         mCustomerPhone = (TextView) findViewById(R.id.customerPhone);
         mCustomerDestination = (TextView) findViewById(R.id.customerDestination);
+
+        mWorkingSwitch = (Switch) findViewById(R.id.workingSwitch);
+        mWorkingSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    connectDriver();
+                }else{
+                    disconnectDriver();
+                }
+            }
+        });
 
         mSettings = (Button) findViewById(R.id.settings);
         mLogout = (Button) findViewById(R.id.logout);
@@ -387,12 +403,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
         mLocationRequest.setInterval(1000);
         mLocationRequest.setFastestInterval(1000);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(DriverMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
-        }
-
-        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
     }
 
     @Override
@@ -403,6 +413,12 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
     }
 
+    private void connectDriver(){
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(DriverMapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+        }
+        LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+    }
 
     private void disconnectDriver(){
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
@@ -427,14 +443,6 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                 }
                 break;
             }
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (!isLoggingOut){
-            disconnectDriver();
         }
     }
 
