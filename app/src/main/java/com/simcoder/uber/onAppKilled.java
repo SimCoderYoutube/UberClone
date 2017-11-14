@@ -1,7 +1,6 @@
 package com.simcoder.uber;
 
 import android.app.Service;
-import android.bluetooth.BluetoothClass;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -10,12 +9,6 @@ import com.firebase.geofire.GeoFire;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.security.Provider;
-
-/**
- * Created by manel on 11/3/2017.
- */
 
 public class onAppKilled extends Service {
     @Nullable
