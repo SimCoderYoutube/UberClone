@@ -86,7 +86,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/pay"
             android:text="Pay Here"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:enabled="false"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

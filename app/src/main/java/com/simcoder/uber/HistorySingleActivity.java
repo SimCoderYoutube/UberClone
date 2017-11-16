@@ -40,6 +40,10 @@ import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
+import com.paypal.android.sdk.payments.PaymentConfirmation;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -68,6 +72,7 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
     private LatLng destinationLatLng, pickupLatLng;
     private String distance;
     private Double ridePrice;
+    private Boolean customerPaid = false;
 
     private GoogleMap mMap;
     private SupportMapFragment mMapFragment;
@@ -136,6 +141,9 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                             mRatingBar.setRating(Integer.valueOf(child.getValue().toString()));
 
                         }
+                        if (child.getKey().equals("customerPaid")){
+                            customerPaid =true;
+                        }
                         if (child.getKey().equals("distance")){
                             distance = child.getValue().toString();
                             rideDistance.setText(distance.substring(0, Math.min(distance.length(), 5)) + " km");
@@ -172,6 +180,11 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
                 mDriverRatingDb.child(rideId).setValue(rating);
             }
         });
+        if(customerPaid){
+            mPay.setEnabled(false);
+        }else{
+            mPay.setEnabled(true);
+        }
         mPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -202,7 +215,22 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PAYPAL_REQUEST_CODE){
             if(resultCode == Activity.RESULT_OK){
+                PaymentConfirmation confirm = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
+                if(confirm != null){
+                    try{
+                        JSONObject jsonObj = new JSONObject(confirm.toJSONObject().toString());
 
+                        String paymentResponse = jsonObj.getJSONObject("response").getString("state");
+
+                        if(paymentResponse.equals("approved")){
+                            Toast.makeText(getApplicationContext(), "Payment successful", Toast.LENGTH_LONG).show();
+                            historyRideInfoDb.child("customerPaid").setValue(true);
+                            mPay.setEnabled(false);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
 
             }else{
                 Toast.makeText(getApplicationContext(), "Payment unsuccessful", Toast.LENGTH_LONG).show();
@@ -215,6 +243,12 @@ public class HistorySingleActivity extends AppCompatActivity implements OnMapRea
         stopService(new Intent(this, PayPalService.class));
         super.onDestroy();
     }
+
+
+
+
+
+
 
     private void getUserInformation(String otherUserDriverOrCustomer, String otherUserId) {
         DatabaseReference mOtherUserDB = FirebaseDatabase.getInstance().getReference().child("Users").child(otherUserDriverOrCustomer).child(otherUserId);
