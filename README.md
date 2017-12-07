@@ -4,6 +4,7 @@
 
 ▷ Full Video Tutorial Playlist here: https://www.youtube.com/playlist?list=PLxabZQCAe5fgXx8cn2iKOtt0VFJrf5bOd
 ▷ Lesson on how to import this project here: https://www.youtube.com/watch?v=2TkNZ-Vael4
+▷ Uber Web Dashboard with payouts for drivers: https://github.com/SimCoderYoutube/uberClone_dashboard
 
 ▷ Become a Patreon: https://www.patreon.com/simpleCoder<br />
 ▷ Donate with PayPal: https://www.paypal.me/simcoder<br />
