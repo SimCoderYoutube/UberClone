@@ -377,7 +377,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                     if(dataSnapshot.child("car")!=null){
                         mDriverCar.setText(dataSnapshot.child("car").getValue().toString());
                     }
-                    if(dataSnapshot.child("profileImageUrl")!=null){
+                    if(dataSnapshot.child("profileImageUrl").getValue()!=null){
                         Glide.with(getApplication()).load(dataSnapshot.child("profileImageUrl").getValue().toString()).into(mDriverProfileImage);
                     }
 
