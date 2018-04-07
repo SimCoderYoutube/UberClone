@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     tools:context="com.simcoder.uber.HistoryActivity"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layout">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,9 +17,21 @@
             android:padding="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Balance: 1000€"
+            android:text="Balance: 0€"
             android:id="@+id/balance"
             android:visibility="gone"/>
+        <EditText
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/payoutEmail"
+            android:hint="paypal email"/>
+        <Button
+            android:visibility="gone"
+            android:text="payout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/payout"/>
     </LinearLayout>
 
     <android.support.v4.widget.NestedScrollView

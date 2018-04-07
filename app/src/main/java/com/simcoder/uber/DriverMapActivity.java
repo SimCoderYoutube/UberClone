@@ -398,6 +398,7 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                     if(!customerId.equals("") && mLastLocation!=null && location != null){
                         rideDistance += mLastLocation.distanceTo(location)/1000;
                     }
+                    mLastLocation = location;
 
 
                     LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());

@@ -489,7 +489,7 @@ public class CustomerMapActivity extends FragmentActivity implements OnMapReadyC
                 checkLocationPermission();
             }
         }
-        
+
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
         mMap.setMyLocationEnabled(true);
     }
