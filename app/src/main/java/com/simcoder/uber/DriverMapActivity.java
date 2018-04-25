@@ -147,6 +147,8 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
                     case 2:
                         recordRide();
                         endRide();
+                        // you have to reassigned this variable
+                        status=0;
                         break;
                 }
             }
@@ -184,6 +186,15 @@ public class DriverMapActivity extends FragmentActivity implements OnMapReadyCal
             }
         });
         getAssignedCustomer();
+    }
+    
+    // when the activity life cycle change 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (state == 0){
+            getAssignedCustomer();
+        }
     }
 
     private void getAssignedCustomer(){
