@@ -58,3 +58,6 @@ P.S: If ou're going to download the full project please use your own firebase AP
 7 - Go to the android studio -> java -> your package name -> PayPalConfig:
         a) add the PAYPAL_CLIENT_ID which you get from the paypal developer control Panel;
         b) add the PAYPAL_PAYOUT_URL which you get in the firebase control panel -> functions and the url that you want is the payouts;
+  **5 -RATINGS**
+  1)
+  2)
