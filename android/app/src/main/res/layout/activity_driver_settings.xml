@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.uber.CustomerSettingsActivity"
+    tools:context="com.binsaleh.hover.CustomerSettingsActivity"
     android:orientation="vertical"
     android:padding="20sp">
     <ImageView
