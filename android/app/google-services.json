@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "330150098209",
+    "project_id": "uberclone3-c5282",
+    "storage_bucket": "uberclone3-c5282.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330150098209:android:43246bff6dc870b998fa60",
+        "android_client_info": {
+          "package_name": "com.binsaleh.hover"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330150098209-s3dg4tvdbo0590poi4e50h24h1vop842.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCx01lqGijy_EVcIDGwl4NZdBaomVKluVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330150098209-s3dg4tvdbo0590poi4e50h24h1vop842.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
