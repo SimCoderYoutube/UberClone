@@ -1,0 +1,41 @@
+{
+  "rules": {
+    "Users": {
+      ".read": "auth != null",
+      "Customers" : {
+        "$uid" : {
+        	".write": "$uid === auth.uid"
+        }
+      },
+      "Drivers" : {
+        "$uid" : {
+          ".write": "$uid === auth.uid",
+          "rating": {
+            ".write": "auth != null"
+        	},
+          "payout_amount": {
+            ".write": false
+        	}
+        }
+      },
+    },
+     "ride_info" : {
+        ".read": "auth != null",
+        ".write": "auth != null"
+    },
+    "driversWorking" : {
+        ".read": "auth != null",
+        ".write": "auth != null"
+    },
+    "customer_requests" : {
+        ".read": "auth != null",
+        ".write": true
+    },
+    "stripe_customers" : {
+        ".read": false,
+        ".write": false
+    }
+    
+    
+  }
+}

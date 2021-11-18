@@ -1,0 +1,199 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.simcoder.uber.Driver.DriverMapActivity" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:id="@+id/drawerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="20sp"
+                android:paddingTop="10sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="10sp"
+                android:src="@drawable/ic_menu" />
+
+            <Switch
+                android:id="@+id/workingSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="20sp"
+                android:paddingTop="10sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="10sp"
+                android:text="@string/working"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/bottomSheet"
+            style="@style/Widget.Design.BottomSheet.Modal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            android:focusable="true">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <LinearLayout
+                    android:id="@+id/customerInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:elevation="1dp"
+                    android:orientation="vertical"
+                    android:translationZ="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:id="@+id/bringUpBottomLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="80sp"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:padding="15sp"
+                                android:src="@drawable/ic_keyboard_arrow_up_black_24dp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="@string/ride_in_progress"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/cancel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@color/white"
+                                android:padding="15sp"
+                                android:src="@drawable/ic_cancel_black_24dp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:background="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="20sp">
+
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:elevation="0dp"
+                                android:id="@+id/phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:backgroundTint="@color/lighterGrey"
+                                android:src="@drawable/ic_call_black_24dp"
+                                app:elevation="0dp"
+                                app:borderWidth="0dp"
+                                android:drawableStart="@drawable/ic_phone"
+                                android:text="@string/phone_driver"
+                                android:textColor="@android:color/white" />
+
+                            <TextView
+                                android:text="@string/double_dash"
+                                android:layout_weight="1"
+                                android:id="@+id/name"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:lines="1"
+                                app:borderWidth="0dp"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:paddingLeft="10sp"
+                                android:paddingRight="10sp"
+                                android:gravity="center" />
+
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:elevation="0dp"
+                                android:id="@+id/openMaps"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                app:elevation="0dp"
+                                app:borderWidth="0dp"
+                                android:backgroundTint="@color/lighterGrey"
+                                android:src="@drawable/ic_map_black_24dp"
+                                android:text="@string/phone_driver"
+                                android:textColor="@android:color/white" />
+
+                        </LinearLayout>
+
+
+
+                        <com.ncorti.slidetoact.SlideToActView
+                            app:border_radius="4dp"
+                            app:inner_color="@color/colorAccent"
+                            app:text_color="@color/white"
+                            app:slider_icon_color="@color/white"
+                            app:slider_icon="@drawable/ic_arrow_forward_black_24dp"
+                            android:layout_margin="20sp"
+                            android:id="@+id/rideStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:slider_height="60dp"
+                            app:text_size="22sp"
+                            app:text_style="bold"
+                            app:text="@string/picked_customer"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.lorentzos.flingswipe.SwipeFlingAdapterView
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rotation_degrees="5" />
+</FrameLayout>
+

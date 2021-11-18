@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/history"
+            android:title="@string/history"
+            android:tooltipText="view full drive history"/>
+        <item
+            android:id="@+id/settings"
+            android:title="@string/settings"
+            android:tooltipText="Change Account Settings"/>
+        <item
+            android:id="@+id/payment"
+            android:title="@string/payment"
+            android:tooltipText="Change Account Payment Settings"/>
+    </group>
+
+</menu>

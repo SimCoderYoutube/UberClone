@@ -1,60 +1,111 @@
-# Uber_android_app_clone
+![Version](https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![image](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/simcoder_here)
+[![image](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/simcoder_here/)
+[![image](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCQ5xY26cw5Noh6poIE-VBog)
 
-▷ Create an android app like uber
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/SimCoderYoutube/UberClone">
+    <img src="images/simcoder.png" alt="Logo" width="120" height="120">
+  </a>
 
+  <h3 align="center">Uber Clone</h3>
 
-**▷ Download the app with the uber design here**: https://www.simcoder.com/product/uber-redesign/ <br />
+  <p align="center">
+    A Uber clone app made with android native (java) and firebase
+    <br />
+    <a href="https://github.com/SimCoderYoutube/UberClone/wiki"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/SimCoderYoutube/UberClone/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/SimCoderYoutube/UberClone/issues">Request Feature</a>
+  </p>
+</p>
 
-▷ Full Video Tutorial Playlist here: https://www.youtube.com/playlist?list=PLxabZQCAe5fgXx8cn2iKOtt0VFJrf5bOd <br />
-▷ Lesson on how to import this project here: https://www.youtube.com/watch?v=2TkNZ-Vael4 <br />
-▷ Uber Functions for payouts and payments: https://github.com/SimCoderYoutube/uberFirebaseFunctions
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-▷ Become a Patreon: https://www.patreon.com/simpleCoder<br />
-▷ Donate with PayPal: https://www.paypal.me/simcoder<br />
-▷ Twitter: https://twitter.com/S1mpleCoder<br />
-▷ GitHub : https://goo.gl/88FHk4<br />
+<!-- ABOUT THE PROJECT -->
 
-▷ If you have any question please ask, I'll try to answer to every question and even look at your code if that is necessary.
+## ℹ️ About The Project
 
+![alt text](images/mockup.png "Title")
 
-**Important Links**
+This repo contains the project made in my youtube chanel called simcoder. This project is a clone of the Uber android app.
 
-Project Download: https://goo.gl/imccvo<br />
-FIrebase: https://goo.gl/9Wahb1<br />
-geofire: https://goo.gl/SYXc2b<br />
-Glide: https://github.com/bumptech/glide<br />
-Place Autocomplete: https://developers.google.com/places/android-api/autocomplete<br />
-Google-Directions-Android: :https://github.com/jd-alexander/google-directions-android<br />
+It is made using android native with java and some firebase services (authentication, real time database and storage).
 
-P.S: If ou're going to download the full project please use your own firebase API, the one in the project will NOT be mantained and the app may not work.
+In the [master](https://github.com/SimCoderYoutube/UberClone/tree/master) branch you have the redesign project which I was previously selling in my website, however you still have access to the youtube series repo in the [youtube_series](https://github.com/SimCoderYoutube/UberClone/tree/youtube_series)
 
+You can follow the youtube series in the following [link](https://www.youtube.com/watch?v=7HbQx0lwRww&list=PLxabZQCAe5fgXx8cn2iKOtt0VFJrf5bOd&ab_channel=SimCoder)
 
-# Implementation Guide
-**1 - Project**
-1 - Open the Project in your android studio;
-2 - !!!!IMPORTANT!!!! Change the Package Name. You can check how to do that here (https://stackoverflow.com/questions/16804093/android-studio-rename-package)
+## 🆕 Getting Started
 
+- ### **Prerequisites**
 
-**2 - Firebase Panel**
-1 - Create Firebase Project (https://console.firebase.google.com/);
-2 - import the file google-service.json into your project as the instructions say;
-3 - Change Pay Plan to either Flame or Blaze;
-4 - Go to Firebase -> Registration and activate Login/Registrtion with email
-5 - Go to Firebase -> storage and activate it;
+  - [Android Studio](https://developer.android.com/)
+  - [Firebase](https://firebase.google.com/)
 
-**3 - google maps**
-1 - Add your project to the google API console (https://console.cloud.google.com/apis?pli=1)
-2 - Activate google Maps API
-3 - Activate google Places API
-4 - Add google maps API key to the res/values/Strings.xml file in the string google_maps_key
+<!-- GETTING STARTED -->
 
-**4 - PayPal**
-1 - Install Node.js. Check my video to see how it is done (https://www.youtube.com/watch?v=nLxH15a4-6g&list=PLxabZQCAe5fgXx8cn2iKOtt0VFJrf5bOd&index=42);
-2 - go to paypal developer and create an app;
-3 - enable payouts in the app you've just created;
-4 - Add the paypal credentials to the node.js project. Again follow the youtube video to see how it is done;
-5 - Set the fee in your index.js file to the percentage that you want
-6 - deploy the project;
-7 - Go to the android studio -> java -> your package name -> PayPalConfig:
-        a) add the PAYPAL_CLIENT_ID which you get from the paypal developer control Panel;
-        b) add the PAYPAL_PAYOUT_URL which you get in the firebase control panel -> functions and the url that you want is the payouts;
+- ### **Installation**
+
+  In order to deploy the project you'll need to follow the [wiki page](https://github.com/SimCoderYoutube/UberClone/wiki/Setup-your-project) dedicated to this effect.
+
+## 🚧 Roadmap
+
+See the [open issues](https://github.com/SimCoderYoutube/UberClone/issues) for a list of proposed features (and known issues).
+
+<!-- CONTRIBUTING -->
+
+## ➕ Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. Please check the [Wiki](https://github.com/SimCoderYoutube/UberClone/wiki/How-to-Contribute)
+
+## 🌟 Show your support
+
+Give a ⭐️ if this project helped you!
+
+And don't forget to subscribe to the [youtube chanel](https://www.youtube.com/c/SimpleCoder?sub_confirmation=1)
+
+## 📝 License
+
+Copyright © 2021 [SimCoder](https://github.com/simcoderYoutube).
+
+This project is [MIT](https://github.com/SimCoderYoutube/UberClone/blob/master/LICENSE) licensed. Some of the dependencies are licensed differently.
+
+<!-- CONTACT -->
+
+## 👤 Contact
+
+**SimCoder**
+
+- Website: www.simcoder.com
+- Twitter: [@simcoder_here](https://twitter.com/simcoder_here)
+- Github: [@simcoderYoutube](https://github.com/simcoderYoutube)
+- Youtube: [SimCoder](https://www.youtube.com/channel/UCQ5xY26cw5Noh6poIE-VBog)

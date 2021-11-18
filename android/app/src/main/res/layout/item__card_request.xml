@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:clipToPadding="false"
+    android:outlineProvider="bounds"
+    android:paddingLeft="10sp"
+    android:paddingTop="10sp"
+    android:paddingRight="10sp"
+    android:paddingBottom="10sp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark">
+
+
+        <LinearLayout
+            android:padding="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <FrameLayout
+                android:paddingTop="20sp"
+                android:paddingBottom="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+                <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                    android:id="@+id/circularProgressBar"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    app:cpb_background_progressbar_color="#b6bbd8"
+                    app:cpb_background_progressbar_width="5dp"
+                    app:cpb_progress="50"
+                    app:cpb_progress_direction="to_right"
+                    app:cpb_progressbar_color="@color/colorAccent"
+                    app:cpb_progressbar_width="10dp"
+                    app:cpb_round_border="false" />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/image"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_default_user" />
+            </FrameLayout>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowRadius="20"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                tools:text="hello"
+                android:textStyle="bold"/>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/distance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:shadowRadius="20"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                tools:text="hello" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/ratingText"
+
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_star_black_24dp"
+                    android:drawableTint="@color/white"
+                    android:drawablePadding="10sp"
+                    android:gravity="center"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="5sp"
+                    android:paddingRight="10sp"
+                    android:paddingBottom="5sp"
+                    android:text="@string/double_dash"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

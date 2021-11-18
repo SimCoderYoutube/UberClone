@@ -1,59 +1,128 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
     defaultConfig {
         applicationId "com.simcoder.uber"
-        minSdkVersion 16
-        targetSdkVersion 25
+        minSdkVersion 21
+        //noinspection OldTargetApi
+        targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName "2.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        useLibrary 'org.apache.http.legacy'
+        manifestPlaceholders = [onesignal_app_id               : 'onesignal_app_id',
+                                onesignal_google_project_number: 'REMOTE']
     }
     buildTypes {
         release {
-            minifyEnabled false
+
+            multiDexKeepFile file('multidex-config.txt')
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
     //noinspection GradleCompatible
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.google.firebase:firebase-core:11.6.0'
-    compile 'com.google.firebase:firebase-database:11.6.0'
-    compile 'com.google.firebase:firebase-auth:11.6.0'
-    compile 'com.google.firebase:firebase-storage:11.6.0'
-    compile 'com.firebase:geofire-android:2.1.1'
-    compile 'com.google.android.gms:play-services:11.6.0'
-    compile 'com.github.bumptech.glide:glide:4.0.0'
-    compile 'com.android.support:design:26.1.0'
-    compile 'com.android.support:cardview-v7:26.1.0'
-    compile 'com.github.jd-alexander:library:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0-beta02'
+    implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    implementation 'com.firebase:geofire-android:3.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.facebook.android:facebook-login:8.1.0'
 
-    compile 'com.paypal.sdk:paypal-android-sdk:2.15.3'
-    testCompile 'junit:junit:4.12'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.stripe:stripe-android:16.1.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.akexorcist:googledirectionlibrary:1.1.1'
+
+    implementation 'com.onesignal:OneSignal:3.15.4'
+    implementation 'com.google.android.libraries.places:places:2.4.0'
+
+    implementation "com.github.addisonelliott:SegmentedButton:3.1.5"
+
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+    implementation 'com.google.android.libraries.places:places:2.4.0'
+    implementation 'com.github.rtchagas:pingplacepicker:1.1.2'
+
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+
+    /* Needed for RxAndroid */
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.8'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+
+
+    /* Needed for Rx Bindings on views */
+    implementation 'com.jakewharton.rxbinding:rxbinding:1.0.1'
+
+
+    annotationProcessor 'com.jakewharton:butterknife:10.2.3'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' //Proguard
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' //Proguard
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0' //Proguard
+
+    /* Used for server calls */
+    implementation 'com.squareup.okio:okio:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    /* Used to make Retrofit easier and GSON & Rx-compatible*/
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    /* Used to debug your Retrofit connections */
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
+    implementation 'com.lorentzos.swipecards:library:1.0.9'
+    implementation 'com.mikhaellopez:circularprogressbar:3.0.3'
+    implementation 'com.github.tintinscorpion:Dual-color-Polyline-Animation:1.0'
+
+    implementation 'com.shreyaspatil:MaterialDialog:2.1'
+
+    // Material Design Library
+    implementation 'com.google.android.material:material:1.3.0'
+
+    implementation 'com.ncorti:slidetoact:0.7.0'
+
+    testImplementation 'junit:junit:4.13.2'
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'
