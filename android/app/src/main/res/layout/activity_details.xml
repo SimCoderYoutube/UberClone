@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="40dp"
+    android:id="@+id/layout">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textColorHint="@color/black">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:drawablePadding="5sp"
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:hint="@string/name"
+            android:id="@+id/name"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+        android:layout_marginTop="30sp"
+        android:id="@+id/radioRealButtonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="2dp"
+        android:background="@color/colorPrimaryDark"
+        app:borderColor="@color/quantum_white_100"
+        app:borderWidth="1dp"
+        app:divider="@color/quantum_white_100"
+        app:dividerPadding="10dp"
+        app:dividerWidth="1dp"
+        app:position="0"
+        app:radius="30dp"
+        app:ripple="true"
+        app:rippleColor="@color/colorAccent"
+        app:selectedBackground="@color/colorAccent">
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            app:drawableWidth="48dp"
+            app:drawableHeight="48dp"
+            app:drawable="@drawable/ic_person_black_24dp"
+            app:drawableTint="@color/white"
+            app:drawableGravity="top"
+            app:text="@string/customer"
+            app:textColor="@color/white" />
+
+        <com.addisonelliott.segmentedbutton.SegmentedButton
+            app:drawableTint="@color/white"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            app:drawableWidth="48dp"
+            app:drawableHeight="48dp"
+            app:drawable="@drawable/ic_type_1"
+            app:drawableGravity="top"
+            app:text="@string/driver"
+            app:textColor="@color/white" />
+    </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:background="@color/colorAccent"
+        android:text="@string/save"
+        android:id="@+id/register"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

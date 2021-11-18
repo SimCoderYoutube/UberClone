@@ -1,0 +1,393 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/drawerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20sp"
+        android:paddingTop="15sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="10sp"
+        android:src="@drawable/ic_menu"
+        android:tint="@color/black" />
+
+
+    <RelativeLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/container_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="-20dp"
+            android:layout_marginRight="-20dp"
+            android:layout_marginBottom="-30dp"
+            app:cardElevation="20dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:id="@+id/driverInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@android:color/white"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingLeft="20sp"
+                android:paddingTop="10sp"
+                android:paddingRight="20sp"
+                android:paddingBottom="30sp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/driverProfileImage"
+                            android:layout_width="100sp"
+                            android:layout_height="100sp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10sp"
+                            android:padding="10sp"
+                            android:src="@mipmap/ic_default_user" />
+
+                        <androidx.cardview.widget.CardView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center"
+                            app:cardCornerRadius="10sp"
+                            app:cardElevation="4dp"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <TextView
+                                android:id="@+id/ratingText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_star_black_24dp"
+                                android:drawablePadding="10sp"
+                                android:gravity="center"
+                                android:paddingLeft="10sp"
+                                android:paddingTop="5sp"
+                                android:paddingRight="10sp"
+                                android:paddingBottom="5sp"
+                                android:text="@string/double_dash"
+                                android:textColor="@color/black" />
+                        </androidx.cardview.widget.CardView>
+
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:padding="15sp">
+
+                        <TextView
+                            android:id="@+id/driverPlate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5sp"
+                            android:text="@string/double_dash"
+                            android:textColor="@color/black"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/driverCar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:paddingBottom="5sp"
+                            android:text="@string/double_dash"
+                            android:textColor="@color/grey" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+
+                    android:padding="15sp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:backgroundTint="@color/lighterGrey"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:elevation="0dp"
+                        android:src="@drawable/ic_call_black_24dp"
+                        android:text="@string/phone_driver"
+                        android:textColor="@android:color/white"
+                        app:borderWidth="0dp"
+                        app:elevation="0dp" />
+
+
+                    <TextView
+                        android:id="@+id/driverName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:paddingBottom="5sp"
+                        android:text="@string/double_dash"
+                        android:textColor="@color/colorAccentDark"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/lighterGrey"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:elevation="0dp"
+                        android:src="@drawable/ic_cancel_black_24dp"
+                        android:text="@string/phone_driver"
+                        android:textColor="@android:color/white"
+                        app:borderWidth="0dp"
+                        app:elevation="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/looking_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/timeout_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10sp"
+                        android:text="@string/there_doesn_t_seem_to_be_a_driver_near_you_you_can_cancel_or_keep_searching"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/cancel_looking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10sp"
+                        android:backgroundTint="@color/colorRed"
+                        android:elevation="0dp"
+                        android:src="@drawable/ic_cancel_black_24dp"
+                        android:text="@string/phone_driver"
+                        android:textColor="@android:color/white"
+                        android:tint="@color/white"
+                        app:borderWidth="0dp"
+                        app:elevation="0dp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10sp"
+                        android:text="@string/looking_driver"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        style="@style/SpinKitView.Wave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:SpinKit_Color="@color/colorAccent" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/location_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:clipToPadding="false"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="8dp"
+                    android:id="@+id/place_from_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    app:cardBackgroundColor="@color/lighterGrey"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/place_from"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="20sp"
+                            android:layout_weight="1"
+                            android:drawableStart="@drawable/ic_circle"
+                            android:drawablePadding="10sp"
+                            android:drawableTint="@color/black"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/from"
+                            tools:targetApi="m" />
+
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/current_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@color/white"
+                            android:elevation="0dp"
+                            android:layout_marginEnd="10sp"
+                            android:src="@drawable/ic_location_on_grey_24dp"
+                            android:text="@string/phone_driver"
+                            android:textColor="@android:color/white"
+                            app:borderWidth="0dp"
+                            app:elevation="0dp"
+                            app:fabSize="mini" />
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    app:cardBackgroundColor="@color/lighterGrey"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true"
+                    app:cardCornerRadius="8sp">
+
+                    <TextView
+                        android:id="@+id/place_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20sp"
+                        android:drawableStart="@drawable/ic_circle_filled"
+                        android:drawablePadding="10sp"
+                        android:drawableTint="@color/black"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/to"
+                        tools:targetApi="m" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/radioLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="vertical" />
+
+                </androidx.core.widget.NestedScrollView>
+
+                <com.ncorti.slidetoact.SlideToActView
+                    android:id="@+id/request"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20sp"
+                    app:border_radius="4dp"
+                    app:inner_color="@color/colorAccent"
+                    app:slider_height="60dp"
+                    app:slider_icon="@drawable/ic_arrow_forward_black_24dp"
+                    app:slider_icon_color="@color/white"
+                    app:text="@string/call_uber"
+                    app:text_color="@color/white"
+                    app:text_size="22sp"
+                    app:text_style="bold" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+</FrameLayout>
+

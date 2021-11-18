@@ -1,0 +1,39 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/locationMarker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:orientation="horizontal"
+    android:background="@drawable/shadow"
+    app:cardCornerRadius="20dp"
+    >
+
+
+    <TextView
+        android:background="@color/black"
+        android:padding="10sp"
+        android:textSize="12sp"
+        android:id="@+id/duration"
+        android:text="Location"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:textSize="12sp"
+        android:padding="10sp"
+        android:id="@+id/location"
+        android:text="Location"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

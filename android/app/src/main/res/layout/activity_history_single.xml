@@ -1,93 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.simcoder.uber.HistorySingleActivity"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="com.simcoder.uber.History.HistorySingleActivity"
     android:orientation="vertical">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimaryDark"
+            android:elevation="4dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
         <fragment
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:id="@+id/map"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20sp"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="From - To"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideLocation"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="distance"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideDistance"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="date"
-                android:layout_marginBottom="20sp"
-                android:id="@+id/rideDate"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/userImage"
-                android:src="@mipmap/ic_default_user"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20sp">
-                <TextView
+                android:layout_marginBottom="10sp"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="name"
-                    android:layout_marginBottom="20sp"
-                    android:id="@+id/userName"/>
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/time"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="@string/date"
+                        android:paddingBottom="10sp"/>
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/price"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:text="@string/date"
+                        android:paddingBottom="10sp"/>
+                </LinearLayout>
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="phone"
-                    android:layout_marginBottom="20sp"
-                    android:id="@+id/userPhone"/>
+                    android:id="@+id/car"
+                    android:textSize="15sp"
+                    android:text="@string/date"/>
             </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="10sp"
+                    android:drawableStart="@drawable/ic_circle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from_to"
+                    android:layout_marginBottom="10sp"
+                    android:id="@+id/pickup_location"/>
+                <TextView
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="10sp"
+                    android:drawableStart="@drawable/ic_circle_filled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/distance"
+                    android:layout_marginBottom="20sp"
+                    android:id="@+id/destination_location"/>
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="6dp"
+                card_view:cardUseCompatPadding="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:padding="10sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="30sp"
+                    android:layout_marginTop="20sp"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="50sp"
+                        android:layout_height="50sp"
+                        android:id="@+id/userImage"
+                        android:src="@mipmap/ic_default_user"/>
+                    <TextView
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/userName"
+                        android:text="@string/name"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="20sp"
+                            android:paddingTop="20sp">
+                            <TextView
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/userPhone"
+                                android:text="@string/double_dash"/>
+                            <View
+                                android:layout_width="1sp"
+                                android:layout_height="match_parent"
+                                android:background="@color/black"/>
+
+
+                            <TextView
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/email"
+                                android:text="@string/double_dash"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:id="@+id/ratingBar_container">
+                            <RatingBar
+
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
+                                style="?android:attr/ratingBarStyleIndicator"
+                                android:isIndicator="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ratingBar"
+                                android:numStars="5"
+                                android:stepSize="1"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:layout_gravity="center"
-            android:numStars="5"
-            android:stepSize="1"
-            android:visibility="gone"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/pay"
-            android:text="Pay Here"
-            android:visibility="gone"
-            android:enabled="false"/>
     </LinearLayout>
 
-</android.support.v4.widget.NestedScrollView>
+</androidx.core.widget.NestedScrollView>

@@ -1,10 +1,290 @@
 <resources>
-    <string name="app_name">Uber</string>
-    <string name="title_activity_driver_map">Map</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">GOOGLE_MAPS_API</string>
+    <string name="firebase_functions_base_url" templateMergeStrategy="preserve" translatable="false">https://firebase_functions_base_url/</string>
+    <string name="publishablekey" templateMergeStrategy="preserve" translatable="false">stripe_pk_key</string>
+    <string name="stripe_client_key" templateMergeStrategy="preserve" translatable="false">stripe_sk_key</string>
+    <string name="firebase_hosting_url" templateMergeStrategy="preserve" translatable="false">https://firebase_hosting_url/</string>
+
+    <string name="app_name">Uber Clone</string>
+    <string name="phone_driver">Phone</string>
+    <string name="call_uber">Call Car</string>
+    <string name="type_4">Bike</string>
+    <string name="type_3">SUV</string>
+    <string name="type_2">Van</string>
+    <string name="type_1">Car</string>
+    <string name="phone">Phone</string>
+    <string name="name">Name </string>
+    <string name="confirm">Confirm</string>
+    <string name="working">Working</string>
+    <string name="destination">Destination</string>
+    <string name="picked_customer">Picked customer</string>
+    <string name="car">Car</string>
+    <string name="balance">Balance</string>
+    <string name="payout">Payout</string>
+    <string name="from_to">From - To</string>
+    <string name="distance">Distance</string>
+    <string name="date">Date</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="log_in">Login</string>
+    <string name="register">Register</string>
+    <string name="history">History</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="customer">Customer</string>
+    <string name="driver">Driver</string>
+    <string name="getting_driver">Getting Your Driver ....</string>
+    <string name="looking_driver">Looking For Your Driver…</string>
+    <string name="driver_here">Driver Here</string>
+    <string name="driver_found">Driver Found</string>
+    <string name="drive_complete">Drive Completed</string>
+    <string name="not_approved">Your Account Has Not Been Approved</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <string name="style_json">
+  [
+        {
+        \elementType\: \"geometry\",
+        \stylers\: [{\color\: \"#242f3e"\}]
+        },
+        {
+        \elementType\: \"labels.text.stroke\",
+        \stylers\: [{\color\: \"#242f3e"\}]
+        },
+        {
+        \elementType\: \"labels.text.fill\",
+        \stylers\: [{\color\: \"#746855"\}]
+        },
+    {
+        \"featureType\": \"all\",
+        \"elementType\": \"labels\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"administrative\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            },
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"landscape\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.attraction\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.business\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.government\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#dfdcd5\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.medical\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#dfdcd5\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.park\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#bad294\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.place_of_worship\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.school\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"poi.sports_complex\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#efebe2\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.highway\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#ffffff\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.highway\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.arterial\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#ffffff\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.arterial\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.local\",
+        \"elementType\": \"geometry.fill\",
+        \"stylers\": [
+            {
+                \"color\": \"#fbfbfb\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"road.local\",
+        \"elementType\": \"geometry.stroke\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"transit\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"visibility\": \"on\"
+            }
+        ]
+    },
+    {
+        \"featureType\": \"water\",
+        \"elementType\": \"all\",
+        \"stylers\": [
+            {
+                \"color\": \"#a5d7e0\"
+            }
+        ]
+    }
+]
+  </string>
+    <string name="to">To…</string>
+    <string name="from">From…</string>
+    <string name="no_phone_call_permissions">You didn\'t give phone call permissions</string>
+    <string name="driver_no_phone">Driver doesn\'t have a connected number</string>
+    <string name="your_trips">Your Trips</string>
+    <string name="waiting_for_location">Waiting for Location</string>
+    <string name="save">save</string>
+    <string name="payment">payment</string>
+    <string name="add_card">Add Card</string>
+    <string name="current_location">Current Location</string>
+    <string name="no_driver_found">Unfortunately, No drivers were found around you.</string>
+    <string name="no_drivers_around">No drivers around</string>
+    <string name="ride_in_progress">Ride In Progress</string>
+    <string name="payout_amount">0 €</string>
+    <string name="no_default_payment">No default payment available</string>
+    <string name="no_payment_available_message">you have to setup a payment card before asking for a driver.</string>
+    <string name="wait_send_payout">Please wait while we send you the payout</string>
+    <string name="payout_issued">Payout Issued</string>
+    <string name="license">license</string>
+    <string name="no_rides_to_show">No Rides to show</string>
+    <string name="type">Type</string>
+    <string name="service">Service</string>
+    <string name="how_was_your_ride">How was your ride?</string>
+    <string name="money_type"> €</string>
+    <string name="double_dash">--</string>
+    <string name="there_doesn_t_seem_to_be_a_driver_near_you_you_can_cancel_or_keep_searching">There doesn\'t seem to be a driver near you, you can cancel or keep searching.</string>
+    <string name="available_for_payout">Available for payout:</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="i_authorise_stripe_samples_to_send_instructions_to_the_financial_institution_that_issued_my_card_to_take_payments_from_my_card_account_in_accordance_with_the_terms_of_my_agreement_with_you">I authorise Stripe Samples to send instructions to the financial institution that issued my card to take payments from my card account in accordance with the terms of my agreement with you.</string>
+    <string name="make_default">Make Default</string>
+    <string name="delete">Delete</string>
+    <string name="_1923_1239_8123_9138">1923 1239 8123 9138</string>
+    <string name="month_year">Month/Year</string>
+    <string name="_05_22">05/22</string>
+    <string name="name_last_name">Name Last Name</string>
+    <string name="rideid">rideId</string>
+    <string name="_120">120 €</string>
+    <string name="_10_03_2010">10 / 03 / 2010</string>
+    <string name="title_activity_maps">Map</string>
+
+
 </resources>
